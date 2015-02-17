@@ -7,7 +7,7 @@ This project aims to create more suitable groovy API, that will allow more conci
 
 ## What it does
 
-Currently there is only extremely thin wrapper for Wire Mock REST API, that is exposed as json builder.
+Currently there is only extremely thin wrapper for Wire Mock REST API, that is exposed as raw json builder.
 Only stubbing is currently supported. Verification incoming.
 
 Example syntax that can be currently achieved:
@@ -39,6 +39,12 @@ def "some integration test that tests feature using external REST resource" () {
 
 Project is in very early stage, pull requests and ideas in form of feature requests are welcome.
 
+## Building
+
+* Clone the repository
+* Run `./gradlew clean build` (on Linux/Mac) or `gradlew.bat build` (on Windows)
+
 ## Licence
+
 Apache Licence v2.0 (see LICENCE.txt)
 
