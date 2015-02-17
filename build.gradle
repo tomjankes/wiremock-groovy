@@ -1,0 +1,21 @@
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.0'
+    compile 'org.apache.httpcomponents:httpclient:4.3.5'
+
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+    testCompile 'com.github.tomakehurst:wiremock:1.53'
+    //for wiremock logging
+    testCompile 'ch.qos.logback:logback-classic:1.1.2'
+    testCompile 'ch.qos.logback:logback-core:1.1.2'
+
+}
