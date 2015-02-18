@@ -1,4 +1,4 @@
-package pl.jankes.wiremock.http
+package com.github.tomjankes.http
 
 import org.apache.http.client.ResponseHandler
 import org.apache.http.client.methods.HttpPost

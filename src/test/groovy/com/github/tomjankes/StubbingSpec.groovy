@@ -1,4 +1,4 @@
-package pl.jankes.wiremock
+package com.github.tomjankes
 import com.github.tomakehurst.wiremock.junit.WireMockRule
 import groovy.json.JsonSlurper
 import org.junit.Rule

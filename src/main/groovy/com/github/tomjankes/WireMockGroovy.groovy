@@ -1,7 +1,7 @@
-package pl.jankes.wiremock
+package com.github.tomjankes
 
 import groovy.json.JsonBuilder
-import pl.jankes.wiremock.http.WireMockHttpApi
+import com.github.tomjankes.http.WireMockHttpApi
 
 class WireMockGroovy {
     String address

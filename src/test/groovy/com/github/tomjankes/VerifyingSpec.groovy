@@ -1,4 +1,4 @@
-package pl.jankes.wiremock
+package com.github.tomjankes
 import com.github.tomakehurst.wiremock.junit.WireMockRule
 import org.apache.http.client.methods.HttpDelete
 import org.apache.http.client.methods.HttpGet
