@@ -1,8 +1,18 @@
-apply plugin: 'groovy'
+plugins {
+    id 'groovy'
+    id 'pl.allegro.tech.build.axion-release' version '1.2.0'
+}
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
-version = '1.0'
+
+scmVersion {
+    tag {
+        prefix = 'wiremock-groovy'
+    }
+}
+project.version = scmVersion.version
+
 
 repositories {
     mavenCentral()
