@@ -4,20 +4,20 @@ import groovy.json.JsonSlurper
 import org.junit.Rule
 import spock.lang.Ignore
 import spock.lang.Specification
+import spock.lang.Subject
 
-class WireMockBuilderSpec extends Specification {
+class StubbingSpec extends Specification {
 
     public static final int PORT = 8080
 
     @Rule
     WireMockRule wireMockRule = new WireMockRule(PORT)
+    @Subject
+    def stubber = new WireMockGroovy(PORT)
 
     def "should correctly stub wire mock get request" () {
-        given:
-        def builder = new WireMockStub(PORT)
-
         when:
-        builder.stub {
+        stubber.stub {
             request {
                 method "GET"
                 url "/some/thing"
@@ -37,11 +37,8 @@ class WireMockBuilderSpec extends Specification {
 
     @Ignore("That would be awesome")
     def "should automagically handle json" () {
-        given:
-        def builder = new WireMockStub(PORT)
-
         when:
-        builder.stub {
+        stubber.stub {
             request {
                 method "GET"
                 url "/some/thing"

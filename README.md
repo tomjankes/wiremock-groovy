@@ -8,15 +8,15 @@ This project aims to create more suitable groovy API, that will allow more conci
 ## What it does
 
 Currently there is only extremely thin wrapper for Wire Mock REST API, that is exposed as raw json builder.
-Only stubbing is currently supported. Verification incoming.
+Examples of what can be currently achieved:
 
-Example syntax that can be currently achieved:
+### Stubbing
 
 ```groovy
 @Rule
 WireMockRule wireMockRule = new WireMockRule()
 
-def wireMockStub = new WireMockStub()
+def wireMockStub = new WireMockGroovy()
 
 def "some integration test that tests feature using external REST resource" () {
     given:
@@ -36,6 +36,42 @@ def "some integration test that tests feature using external REST resource" () {
     ...
 }
 ```
+
+### Verifying
+
+Verifying can be achieved by querying for count of matching requests that have been sent to WireMock server.
+
+```groovy
+@Rule
+WireMockRule wireMockRule = new WireMockRule()
+
+def wireMockStub = new WireMockGroovy()
+
+def "example verifying test" () {
+    ...
+    then:
+    1 == wireMockStub.count {
+        method "GET"
+        url "/some/url"
+    }
+}
+
+def "test using groovy truth if you need at least one request and shows example matcher" () {
+    ...
+    then:
+    wireMockStub.count {
+        method "GET"
+        url "/some/url"
+        headers {
+            "Content-Type" {
+                "matches": "*.xml"
+            }
+        }
+    }
+}
+```
+
+##Contribution
 
 Project is in very early stage, pull requests and ideas in form of feature requests are welcome.
 
