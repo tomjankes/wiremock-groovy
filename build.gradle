@@ -1,7 +1,11 @@
 plugins {
     id 'groovy'
     id 'pl.allegro.tech.build.axion-release' version '1.2.0'
+    id 'maven'
+    id 'signing'
 }
+
+
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -28,4 +32,22 @@ dependencies {
     testCompile 'ch.qos.logback:logback-classic:1.1.2'
     testCompile 'ch.qos.logback:logback-core:1.1.2'
 
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
 }
