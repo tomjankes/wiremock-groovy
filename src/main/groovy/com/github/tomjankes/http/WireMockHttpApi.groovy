@@ -6,7 +6,7 @@ import org.apache.http.entity.StringEntity
 import org.apache.http.impl.client.HttpClients
 /**
  * temporarily using HttpClient as Http Builder has dependency clashes
- * with wire mock
+ * with current wire mock
  */
 class WireMockHttpApi {
 
