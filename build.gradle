@@ -48,6 +48,11 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
+def isReleaseBuild() {
+    !project.version.toString().contains('SNAPSHOT')
+}
+
 signing {
+    required { isReleaseBuild() && gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
 }
