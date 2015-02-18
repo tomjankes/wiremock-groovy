@@ -1,4 +1,4 @@
-package com.github.tomjankes.http
+package com.github.tomjankes.wiremock.http
 
 import groovy.json.JsonSlurper
 import org.apache.http.HttpResponse

@@ -1,5 +1,6 @@
-package com.github.tomjankes
+package com.github.tomjankes.wiremock
 import com.github.tomakehurst.wiremock.junit.WireMockRule
+import com.github.tomjankes.wiremock.WireMockGroovy
 import org.apache.http.client.methods.HttpDelete
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.HttpClients

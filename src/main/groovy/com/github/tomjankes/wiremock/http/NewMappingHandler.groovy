@@ -1,4 +1,4 @@
-package com.github.tomjankes.http
+package com.github.tomjankes.wiremock.http
 
 import org.apache.http.HttpResponse
 import org.apache.http.client.ClientProtocolException

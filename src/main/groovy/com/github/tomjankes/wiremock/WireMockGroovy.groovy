@@ -1,7 +1,7 @@
-package com.github.tomjankes
+package com.github.tomjankes.wiremock
 
 import groovy.json.JsonBuilder
-import com.github.tomjankes.http.WireMockHttpApi
+import com.github.tomjankes.wiremock.http.WireMockHttpApi
 
 /**
  * Main WireMockGroovy entry point.
