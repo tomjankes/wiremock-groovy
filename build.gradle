@@ -5,17 +5,16 @@ plugins {
     id 'signing'
 }
 
-
-
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 scmVersion {
     tag {
-        prefix = 'wiremock-groovy'
+        prefix = project.name
     }
 }
 project.version = scmVersion.version
+project.group = 'com.github.tomjankes'
 
 
 repositories {
@@ -44,6 +43,12 @@ task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
 }
 
+ext {
+    ossrhUsername = project.ext.has('ossrhUsername') ? project.ext.ossrhUsername : ''
+    ossrhPassword = project.ext.has('ossrhPassword') ? project.ext.ossrhPassword : ''
+}
+
+
 artifacts {
     archives javadocJar, sourcesJar
 }
@@ -55,4 +60,50 @@ def isReleaseBuild() {
 signing {
     required { isReleaseBuild() && gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
+}
+
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'WireMock groovy'
+                packaging 'jar'
+                description 'WireMock api for groovy'
+                url 'https://github.com/tomjankes/wiremock-groovy'
+
+                scm {
+                    connection 'scm:git:https://github.com/tomjankes/wiremock-groovy.git'
+                    developerConnection 'scm:git:https://github.com/tomjankes/wiremock-groovy.git'
+                    url 'https://github.com/tomjankes/wiremock-groovy'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'tomjankes'
+                        name 'Tomasz Jankowski'
+                        email 'jankowski.tomek+ossrh@gmail.com'
+                    }
+                }
+            }
+        }
+    }
 }
