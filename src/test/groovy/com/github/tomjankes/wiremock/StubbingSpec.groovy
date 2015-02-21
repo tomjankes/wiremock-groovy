@@ -1,6 +1,5 @@
 package com.github.tomjankes.wiremock
 import com.github.tomakehurst.wiremock.junit.WireMockRule
-import com.github.tomjankes.wiremock.WireMockGroovy
 import groovy.json.JsonSlurper
 import org.junit.Rule
 import spock.lang.Ignore

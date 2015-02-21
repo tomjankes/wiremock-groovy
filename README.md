@@ -60,11 +60,11 @@ def "test using groovy truth if you need at least one request and shows example 
     ...
     then:
     wireMockStub.count {
-        method "GET"
+        method "POST"
         url "/some/url"
         headers {
             "Content-Type" {
-                "matches": "*.xml"
+                matches ".*xml"
             }
         }
     }
