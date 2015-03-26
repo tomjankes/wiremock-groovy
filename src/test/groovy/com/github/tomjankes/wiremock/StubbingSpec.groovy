@@ -2,7 +2,6 @@ package com.github.tomjankes.wiremock
 import com.github.tomakehurst.wiremock.junit.WireMockRule
 import groovy.json.JsonSlurper
 import org.junit.Rule
-import spock.lang.Ignore
 import spock.lang.Specification
 import spock.lang.Subject
 
@@ -13,11 +12,11 @@ class StubbingSpec extends Specification {
     @Rule
     WireMockRule wireMockRule = new WireMockRule(PORT)
     @Subject
-    def stubber = new WireMockGroovy(PORT)
+    def wireMockGroovy = WireMockGroovy.builder().withPort(PORT).enableJsonBodyFeature().build()
 
     def "should correctly stub wire mock get request" () {
         when:
-        stubber.stub {
+        wireMockGroovy.stub {
             request {
                 method "GET"
                 url "/some/thing"
@@ -35,17 +34,16 @@ class StubbingSpec extends Specification {
         new URL("http://localhost:8080/some/thing").getText() == "Some body"
     }
 
-    @Ignore("That would be awesome")
     def "should automagically handle json" () {
         when:
-        stubber.stub {
+        wireMockGroovy.stub {
             request {
                 method "GET"
                 url "/some/thing"
             }
             response {
                 status 200
-                body {
+                jsonBody {
                     element "elementValue"
                 }
                 headers {
