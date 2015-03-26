@@ -1,12 +1,11 @@
 package com.github.tomjankes.wiremock
-
 import com.github.tomakehurst.wiremock.junit.WireMockRule
-import groovy.json.JsonSlurper
 import org.junit.Rule
 import spock.lang.Specification
 import spock.lang.Subject
 import spock.lang.Unroll
 
+import static com.github.tomjankes.wiremock.testutils.HttpHelper.getJson
 
 class VariablesInJsonSpec extends Specification {
     @Rule
@@ -31,7 +30,7 @@ class VariablesInJsonSpec extends Specification {
             }
         }
         and:
-        def json = new JsonSlurper().parse(new URL("http://localhost:8080/some/thing"))
+        def json = getJson("http://localhost:8080/some/thing")
 
         then:
         json.some_key == someValue

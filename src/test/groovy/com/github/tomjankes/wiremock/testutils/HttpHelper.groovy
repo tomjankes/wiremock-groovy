@@ -1,6 +1,7 @@
 package com.github.tomjankes.wiremock.testutils
 
 import com.google.common.base.Charsets
+import groovy.json.JsonSlurper
 import org.apache.http.HttpResponse
 import org.apache.http.client.ClientProtocolException
 import org.apache.http.client.ResponseHandler
@@ -34,5 +35,9 @@ class HttpHelper {
         post.addHeader("Content-Type", contentType)
 
         HttpClients.createDefault().execute(post)
+    }
+
+    static def getJson(String url) {
+        new JsonSlurper().parse(new URL(url))
     }
 }
