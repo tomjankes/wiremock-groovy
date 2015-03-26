@@ -1,5 +1,5 @@
 # Wiremock groovy
-[![Build Status](https://travis-ci.org/tomjankes/wiremock-groovy.svg?branch=master)](https://travis-ci.org/tomjankes/wiremock-groovy)
+[![Build Status](https://travis-ci.org/tomjankes/wiremock-groovy.svg?branch=master)](https://travis-ci.org/tomjankes/wiremock-groovy) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.tomjankes/wiremock-groovy/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.tomjankes/wiremock-groovy)
 ## What it is
 
 I love [WireMock](https://github.com/tomakehurst/wiremock) and use it extensively in integration tests. I also love how [Spock](https://github.com/spockframework/spock) allows to write very readable and clean tests.
