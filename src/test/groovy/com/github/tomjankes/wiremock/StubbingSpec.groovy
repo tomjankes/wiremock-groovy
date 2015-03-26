@@ -1,9 +1,10 @@
 package com.github.tomjankes.wiremock
 import com.github.tomakehurst.wiremock.junit.WireMockRule
-import groovy.json.JsonSlurper
 import org.junit.Rule
 import spock.lang.Specification
 import spock.lang.Subject
+
+import static com.github.tomjankes.wiremock.testutils.HttpHelper.getJson
 
 class StubbingSpec extends Specification {
 
@@ -53,7 +54,6 @@ class StubbingSpec extends Specification {
         }
 
         then:
-        def reader = new StringReader(new URL("http://localhost:8080/some/thing").getText())
-        new JsonSlurper().parse(reader).element == "elementValue"
+        getJson("http://localhost:8080/some/thing").element == "elementValue"
     }
 }
