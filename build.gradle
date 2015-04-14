@@ -6,7 +6,7 @@ plugins {
 }
 
 sourceCompatibility = 1.7
-targetCompatibility = 1.7
+targetCompatibility = 1.6
 
 scmVersion {
     tag {
