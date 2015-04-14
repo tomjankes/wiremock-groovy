@@ -12,11 +12,11 @@ scmVersion {
     tag {
         prefix = project.name
     }
+    versionCreator 'versionWithBranch'
 }
 project.version = scmVersion.version
 project.group = 'com.github.tomjankes'
 
-println "Project version is $project.version"
 
 
 repositories {
