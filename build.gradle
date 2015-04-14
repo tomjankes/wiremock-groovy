@@ -1,6 +1,6 @@
 plugins {
     id 'groovy'
-    id 'pl.allegro.tech.build.axion-release' version '1.2.2'
+    id 'pl.allegro.tech.build.axion-release' version '1.2.3'
     id 'maven'
     id 'signing'
 }
@@ -12,9 +12,11 @@ scmVersion {
     tag {
         prefix = project.name
     }
+    versionCreator 'versionWithBranch'
 }
 project.version = scmVersion.version
 project.group = 'com.github.tomjankes'
+
 
 
 repositories {
